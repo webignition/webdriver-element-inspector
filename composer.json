@@ -1,0 +1,44 @@
+{
+    "name": "webignition/webdriver-element-inspector",
+    "description": "Convenience methods for getting information from a Facebook\\WebDriver\\WebDriverElement instance",
+    "keywords": ["webdriver", "webdriver-element", "inspector"],
+    "homepage": "https://github.com/webignition/webdriver-element-inspector",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jon Cram",
+            "email": "webignition@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "webignition\\WebDriverElementInspector\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "webignition\\WebDriverElementInspector\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "cs": "./vendor/bin/phpcs src tests --colors --standard=PSR2",
+        "static-analysis": "./vendor/bin/phpstan analyse src tests --level=7",
+        "test": "./vendor/bin/phpunit --colors=always",
+        "ci": [
+            "@composer cs",
+            "@composer static-analysis",
+            "@composer test"
+        ]
+    },
+    "require": {
+        "php": ">=7.2",
+        "facebook/webdriver": "^1.7.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~8.0",
+        "squizlabs/php_codesniffer": "3.*",
+        "phpstan/phpstan": "^0.11.15",
+        "symfony/panther": "^0.5"
+    }
+}
