@@ -30,25 +30,58 @@ class InspectorTest extends \PHPUnit\Framework\TestCase
 
     public function getValueDataProvider(): array
     {
-        $hasEmptyValueAttributeElement = \Mockery::mock(WebDriverElement::class);
-        $hasEmptyValueAttributeElement
+        $emptyInput = \Mockery::mock(WebDriverElement::class);
+        $emptyInput
+            ->shouldReceive('getTagName')
+            ->andReturn(Inspector::INPUT_ELEMENT_TAG_NAME);
+
+        $emptyInput
             ->shouldReceive('getAttribute')
             ->andReturn('');
 
-        $hasNotEmptyValueAttributeElement = \Mockery::mock(WebDriverElement::class);
-        $hasNotEmptyValueAttributeElement
+        $input = \Mockery::mock(WebDriverElement::class);
+        $input
+            ->shouldReceive('getTagName')
+            ->andReturn(Inspector::INPUT_ELEMENT_TAG_NAME);
+
+        $input
             ->shouldReceive('getAttribute')
             ->andReturn('value content');
 
+        $emptyTextarea = \Mockery::mock(WebDriverElement::class);
+        $emptyTextarea
+            ->shouldReceive('getTagName')
+            ->andReturn('textarea');
+
+        $emptyTextarea
+            ->shouldReceive('getText')
+            ->andReturn('');
+
+        $textarea = \Mockery::mock(WebDriverElement::class);
+        $textarea
+            ->shouldReceive('getTagName')
+            ->andReturn('textarea');
+
+        $textarea
+            ->shouldReceive('getText')
+            ->andReturn('textarea content');
 
         return [
-            'has empty value attribute' => [
-                'element' => $hasEmptyValueAttributeElement,
+            'empty input' => [
+                'element' => $emptyInput,
                 'expectedValue' => '',
             ],
-            'has non-empty value attribute' => [
-                'element' => $hasNotEmptyValueAttributeElement,
+            'input' => [
+                'element' => $input,
                 'expectedValue' => 'value content',
+            ],
+            'empty textarea' => [
+                'element' => $emptyTextarea,
+                'expectedValue' => '',
+            ],
+            'textarea' => [
+                'element' => $textarea,
+                'expectedValue' => 'textarea content',
             ],
         ];
     }

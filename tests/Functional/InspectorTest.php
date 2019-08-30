@@ -25,7 +25,7 @@ class InspectorTest extends AbstractTestCase
     /**
      * @dataProvider getValueDataProvider
      */
-    public function testGetValue(string $fixture, string $elementCssSelector, string $expectedValue)
+    public function testGetValue(string $fixture, string $elementCssSelector, ?string $expectedValue = null)
     {
         $crawler = self::$client->request('GET', $fixture);
         $element = $crawler->filter($elementCssSelector)->getElement(0);
@@ -38,20 +38,30 @@ class InspectorTest extends AbstractTestCase
     public function getValueDataProvider(): array
     {
         return [
-            'input element, has empty value attribute' => [
+            'input, empty value' => [
                 'fixture' => '/form.html',
                 'elementCssSelector' => 'input[name="input-with-empty-value"]',
                 'expectedValue' => '',
             ],
-            'input element, has non-empty value attribute' => [
+            'input, non-empty value' => [
                 'fixture' => '/form.html',
                 'elementCssSelector' => 'input[name="input-with-non-empty-value"]',
                 'expectedValue' => 'value content',
             ],
-            'input element, does not have value attribute' => [
+            'input, no value attribute' => [
                 'fixture' => '/form.html',
                 'elementCssSelector' => 'input[name="input-without-value"]',
                 'expectedValue' => '',
+            ],
+            'textarea element, empty' => [
+                'fixture' => '/form.html',
+                'elementCssSelector' => 'textarea[name="empty-textarea"]',
+                'expectedValue' => '',
+            ],
+            'textarea element, non-empty' => [
+                'fixture' => '/form.html',
+                'elementCssSelector' => 'textarea[name="non-empty-textarea"]',
+                'expectedValue' => 'textarea content',
             ],
         ];
     }
