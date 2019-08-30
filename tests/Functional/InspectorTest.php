@@ -63,6 +63,16 @@ class InspectorTest extends AbstractTestCase
                 'elementCssSelector' => 'textarea[name="non-empty-textarea"]',
                 'expectedValue' => 'textarea content',
             ],
+            'input[type=radio] not checked' => [
+                'fixture' => '/form.html',
+                'elementCssSelector' => 'input[name="radio-not-checked"]',
+                'expectedValue' => 'not-checked-1',
+            ],
+            'input[type=radio] checked' => [
+                'fixture' => '/form.html',
+                'elementCssSelector' => 'input[name="radio-checked"]',
+                'expectedValue' => 'checked-1',
+            ],
         ];
     }
 }
