@@ -23,12 +23,12 @@ class InspectorTest extends \PHPUnit\Framework\TestCase
     /**
      * @dataProvider getValueDataProvider
      */
-    public function testGetValue(WebDriverElement $element, ?string $expectedValue)
+    public function testGetValue(WebDriverElement $element, string $expectedValue)
     {
         $this->assertSame($expectedValue, $this->inspector->getValue($element));
     }
 
-    public function getValueDataProvider()
+    public function getValueDataProvider(): array
     {
         $hasEmptyValueAttributeElement = \Mockery::mock(WebDriverElement::class);
         $hasEmptyValueAttributeElement
@@ -40,10 +40,6 @@ class InspectorTest extends \PHPUnit\Framework\TestCase
             ->shouldReceive('getAttribute')
             ->andReturn('value content');
 
-        $doesNotHaveValueAttributeElement = \Mockery::mock(WebDriverElement::class);
-        $doesNotHaveValueAttributeElement
-            ->shouldReceive('getAttribute')
-            ->andReturn(null);
 
         return [
             'has empty value attribute' => [
@@ -53,10 +49,6 @@ class InspectorTest extends \PHPUnit\Framework\TestCase
             'has non-empty value attribute' => [
                 'element' => $hasNotEmptyValueAttributeElement,
                 'expectedValue' => 'value content',
-            ],
-            'does not have value attribute' => [
-                'element' => $doesNotHaveValueAttributeElement,
-                'expectedValue' => null,
             ],
         ];
     }
