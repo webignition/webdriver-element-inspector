@@ -4,6 +4,9 @@ namespace webignition\WebDriverElementInspector;
 
 use Facebook\WebDriver\WebDriverElement;
 use webignition\WebDriverElementCollection\RadioButtonCollection;
+use webignition\WebDriverElementCollection\SelectOptionCollection;
+use webignition\WebDriverElementCollection\Tests\SelectOptionCollectionTest;
+use webignition\WebDriverElementCollection\WebDriverElementCollectionInterface;
 
 class Inspector
 {
@@ -34,17 +37,27 @@ class Inspector
 
     public function getRadioGroupValue(RadioButtonCollection $collection): ?string
     {
-        foreach ($collection as $radioButton) {
-            if ($radioButton->isSelected()) {
-                return $this->getValueAttribute($radioButton);
-            }
-        }
+        return $this->getSelectedCollectionValue($collection);
+    }
 
-        return null;
+    public function getSelectOptionGroupValue(SelectOptionCollection $collection): ?string
+    {
+        return $this->getSelectedCollectionValue($collection);
     }
 
     private function getValueAttribute(WebDriverElement $element): ?string
     {
         return $element->getAttribute(self::VALUE_ATTRIBUTE);
+    }
+
+    private function getSelectedCollectionValue(WebDriverElementCollectionInterface $collection): ?string
+    {
+        foreach ($collection as $item) {
+            if ($item->isSelected()) {
+                return $this->getValueAttribute($item);
+            }
+        }
+
+        return null;
     }
 }
