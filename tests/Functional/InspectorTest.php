@@ -6,6 +6,7 @@ declare(strict_types=1);
 namespace webignition\WebDriverElementInspector\Tests\Functional;
 
 use Facebook\WebDriver\WebDriverElement;
+use webignition\WebDriverElementCollection\RadioButtonCollection;
 use webignition\WebDriverElementInspector\Inspector;
 
 class InspectorTest extends AbstractTestCase
@@ -72,6 +73,40 @@ class InspectorTest extends AbstractTestCase
                 'fixture' => '/form.html',
                 'elementCssSelector' => 'input[name="radio-checked"]',
                 'expectedValue' => 'checked-1',
+            ],
+        ];
+    }
+
+    /**
+     * @dataProvider getRadioGroupValueDataProvider
+     */
+    public function testGetRadioGroupValue(string $fixture, string $elementCssSelector, ?string $expectedValue = null)
+    {
+        $crawler = self::$client->request('GET', $fixture);
+        $elements = $crawler->filter($elementCssSelector);
+        $collectionElements = [];
+
+        foreach ($elements as $element) {
+            $collectionElements[] = $element;
+        }
+
+        $collection = new RadioButtonCollection($collectionElements);
+
+        $this->assertSame($expectedValue, $this->inspector->getRadioGroupValue($collection));
+    }
+
+    public function getRadioGroupValueDataProvider(): array
+    {
+        return [
+            'input[type=radio] not checked' => [
+                'fixture' => '/form.html',
+                'elementCssSelector' => 'input[name="radio-not-checked"]',
+                'expectedValue' => null,
+            ],
+            'input[type=radio] checked' => [
+                'fixture' => '/form.html',
+                'elementCssSelector' => 'input[name="radio-checked"]',
+                'expectedValue' => 'checked-2',
             ],
         ];
     }

@@ -3,13 +3,14 @@
 namespace webignition\WebDriverElementInspector;
 
 use Facebook\WebDriver\WebDriverElement;
+use webignition\WebDriverElementCollection\RadioButtonCollection;
 
 class Inspector
 {
     const INPUT_ELEMENT_TAG_NAME = 'input';
     const TEXTAREA_TAG_NAME = 'textarea';
 
-    const INPUT_ELEMENT_VALUE_ATTRIBUTE = 'value';
+    const VALUE_ATTRIBUTE = 'value';
 
     public static function create(): Inspector
     {
@@ -21,13 +22,29 @@ class Inspector
         $tagName = $element->getTagName();
 
         if (self::INPUT_ELEMENT_TAG_NAME === $tagName) {
-            return $element->getAttribute(self::INPUT_ELEMENT_VALUE_ATTRIBUTE);
+            return $this->getValueAttribute($element);
         }
 
         if (self::TEXTAREA_TAG_NAME === $tagName) {
             return $element->getText();
         }
 
-        return '';
+        return null;
+    }
+
+    public function getRadioGroupValue(RadioButtonCollection $collection): ?string
+    {
+        foreach ($collection as $radioButton) {
+            if ($radioButton->isSelected()) {
+                return $this->getValueAttribute($radioButton);
+            }
+        }
+
+        return null;
+    }
+
+    private function getValueAttribute(WebDriverElement $element): ?string
+    {
+        return $element->getAttribute(self::VALUE_ATTRIBUTE);
     }
 }
