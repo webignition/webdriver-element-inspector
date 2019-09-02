@@ -21,14 +21,14 @@ class InspectorTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @dataProvider getValueDataProvider
+     * @dataProvider getElementValueDataProvider
      */
-    public function testGetValue(WebDriverElement $element, string $expectedValue)
+    public function testGetElementValue(WebDriverElement $element, string $expectedValue)
     {
-        $this->assertSame($expectedValue, $this->inspector->getValue($element));
+        $this->assertSame($expectedValue, $this->inspector->getElementValue($element));
     }
 
-    public function getValueDataProvider(): array
+    public function getElementValueDataProvider(): array
     {
         $emptyInput = \Mockery::mock(WebDriverElement::class);
         $emptyInput

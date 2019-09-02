@@ -5,7 +5,6 @@ namespace webignition\WebDriverElementInspector;
 use Facebook\WebDriver\WebDriverElement;
 use webignition\WebDriverElementCollection\RadioButtonCollection;
 use webignition\WebDriverElementCollection\SelectOptionCollection;
-use webignition\WebDriverElementCollection\Tests\SelectOptionCollectionTest;
 use webignition\WebDriverElementCollection\WebDriverElementCollectionInterface;
 
 class Inspector
@@ -20,7 +19,28 @@ class Inspector
         return new Inspector();
     }
 
-    public function getValue(WebDriverElement $element): ?string
+    public function getValue(WebDriverElementCollectionInterface $collection): ?string
+    {
+        if ($collection instanceof RadioButtonCollection) {
+            return $this->getRadioGroupValue($collection);
+        }
+
+        if ($collection instanceof SelectOptionCollection) {
+            return $this->getSelectedCollectionValue($collection);
+        }
+
+        if (1 === count($collection)) {
+            $element = $collection->get(0);
+
+            if ($element instanceof WebDriverElement) {
+                return $this->getElementValue($element);
+            }
+        }
+
+        return null;
+    }
+
+    public function getElementValue(WebDriverElement $element): ?string
     {
         $tagName = $element->getTagName();
 

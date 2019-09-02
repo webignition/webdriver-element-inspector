@@ -8,6 +8,7 @@ namespace webignition\WebDriverElementInspector\Tests\Functional;
 use Facebook\WebDriver\WebDriverElement;
 use webignition\WebDriverElementCollection\RadioButtonCollection;
 use webignition\WebDriverElementCollection\SelectOptionCollection;
+use webignition\WebDriverElementCollection\WebDriverElementCollection;
 use webignition\WebDriverElementInspector\Inspector;
 
 class InspectorTest extends AbstractTestCase
@@ -25,19 +26,19 @@ class InspectorTest extends AbstractTestCase
     }
 
     /**
-     * @dataProvider getValueDataProvider
+     * @dataProvider getElementValueDataProvider
      */
-    public function testGetValue(string $fixture, string $elementCssSelector, ?string $expectedValue = null)
+    public function testGetElementValue(string $fixture, string $elementCssSelector, ?string $expectedValue)
     {
         $crawler = self::$client->request('GET', $fixture);
         $element = $crawler->filter($elementCssSelector)->getElement(0);
 
         if ($element instanceof WebDriverElement) {
-            $this->assertSame($expectedValue, $this->inspector->getValue($element));
+            $this->assertSame($expectedValue, $this->inspector->getElementValue($element));
         }
     }
 
-    public function getValueDataProvider(): array
+    public function getElementValueDataProvider(): array
     {
         return [
             'input, empty value' => [
@@ -81,7 +82,7 @@ class InspectorTest extends AbstractTestCase
     /**
      * @dataProvider getRadioGroupValueDataProvider
      */
-    public function testGetRadioGroupValue(string $fixture, string $elementCssSelector, ?string $expectedValue = null)
+    public function testGetRadioGroupValue(string $fixture, string $elementCssSelector, ?string $expectedValue)
     {
         $crawler = self::$client->request('GET', $fixture);
         $elements = $crawler->filter($elementCssSelector);
@@ -118,7 +119,7 @@ class InspectorTest extends AbstractTestCase
     public function testGetSelectOptionGroupValue(
         string $fixture,
         string $elementCssSelector,
-        ?string $expectedValue = null
+        ?string $expectedValue
     ) {
         $crawler = self::$client->request('GET', $fixture);
         $elements = $crawler->filter($elementCssSelector);
@@ -147,5 +148,34 @@ class InspectorTest extends AbstractTestCase
                 'expectedValue' => 'has-selected-3',
             ],
         ];
+    }
+
+    public function testGetValue()
+    {
+        $crawler = self::$client->request('GET', '/form.html');
+
+        $singleInputCollection = new WebDriverElementCollection([
+            $crawler->filter('input[name="input-with-non-empty-value"]')->getElement(0),
+        ]);
+
+        $radioElements = [];
+        $radioCrawler = $crawler->filter('input[type="radio"][name="radio-checked"]');
+        foreach ($radioCrawler as $radioButton) {
+            $radioElements[] = $radioButton;
+        }
+
+        $radioButtonCollection = new RadioButtonCollection($radioElements);
+
+        $optionElements = [];
+        $optionCrawler = $crawler->filter('select[name="select-has-selected"] option');
+        foreach ($optionCrawler as $option) {
+            $optionElements[] = $option;
+        }
+
+        $selectOptionGroupCollection = new SelectOptionCollection($optionElements);
+
+        $this->assertSame('value content', $this->inspector->getValue($singleInputCollection));
+        $this->assertSame('checked-2', $this->inspector->getValue($radioButtonCollection));
+        $this->assertSame('has-selected-3', $this->inspector->getValue($selectOptionGroupCollection));
     }
 }
