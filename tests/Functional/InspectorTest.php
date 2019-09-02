@@ -7,6 +7,7 @@ namespace webignition\WebDriverElementInspector\Tests\Functional;
 
 use Facebook\WebDriver\WebDriverElement;
 use webignition\WebDriverElementCollection\RadioButtonCollection;
+use webignition\WebDriverElementCollection\SelectOptionCollection;
 use webignition\WebDriverElementInspector\Inspector;
 
 class InspectorTest extends AbstractTestCase
@@ -107,6 +108,43 @@ class InspectorTest extends AbstractTestCase
                 'fixture' => '/form.html',
                 'elementCssSelector' => 'input[name="radio-checked"]',
                 'expectedValue' => 'checked-2',
+            ],
+        ];
+    }
+
+    /**
+     * @dataProvider getSelectOptionGroupValueDataProvider
+     */
+    public function testGetSelectOptionGroupValue(
+        string $fixture,
+        string $elementCssSelector,
+        ?string $expectedValue = null
+    ) {
+        $crawler = self::$client->request('GET', $fixture);
+        $elements = $crawler->filter($elementCssSelector);
+        $collectionElements = [];
+
+        foreach ($elements as $element) {
+            $collectionElements[] = $element;
+        }
+
+        $collection = new SelectOptionCollection($collectionElements);
+
+        $this->assertSame($expectedValue, $this->inspector->getSelectOptionGroupValue($collection));
+    }
+
+    public function getSelectOptionGroupValueDataProvider(): array
+    {
+        return [
+            'select, none selected' => [
+                'fixture' => '/form.html',
+                'elementCssSelector' => 'select[name="select-none-selected"] option',
+                'expectedValue' => 'none-selected-1',
+            ],
+            'select, has selected' => [
+                'fixture' => '/form.html',
+                'elementCssSelector' => 'select[name="select-has-selected"] option',
+                'expectedValue' => 'has-selected-3',
             ],
         ];
     }
