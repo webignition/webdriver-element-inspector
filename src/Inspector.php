@@ -52,7 +52,7 @@ class Inspector
             return $element->getText();
         }
 
-        return null;
+        return $element->getText();
     }
 
     public function getRadioGroupValue(RadioButtonCollection $collection): ?string

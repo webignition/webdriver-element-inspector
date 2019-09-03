@@ -76,6 +76,21 @@ class InspectorTest extends AbstractTestCase
                 'elementCssSelector' => 'input[name="radio-checked"]',
                 'expectedValue' => 'checked-1',
             ],
+            'paragraph, content with no line returns' => [
+                'fixture' => '/content.html',
+                'elementCssSelector' => '.p1',
+                'expectedValue' => 'Single non-breaking line',
+            ],
+            'paragraph, content wrapped in line returns' => [
+                'fixture' => '/content.html',
+                'elementCssSelector' => '.p2',
+                'expectedValue' => 'Single non-breaking line wrapped in line returns',
+            ],
+            'paragraph, content wrapped in many line returns' => [
+                'fixture' => '/content.html',
+                'elementCssSelector' => '.p3',
+                'expectedValue' => 'Single non-breaking line wrapped in many line returns',
+            ],
         ];
     }
 
