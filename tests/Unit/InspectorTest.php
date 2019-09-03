@@ -66,6 +66,15 @@ class InspectorTest extends \PHPUnit\Framework\TestCase
             ->shouldReceive('getText')
             ->andReturn('textarea content');
 
+        $paragraph = \Mockery::mock(WebDriverElement::class);
+        $paragraph
+            ->shouldReceive('getTagName')
+            ->andReturn('p');
+
+        $paragraph
+            ->shouldReceive('getText')
+            ->andReturn('paragraph content');
+
         return [
             'empty input' => [
                 'element' => $emptyInput,
@@ -82,6 +91,10 @@ class InspectorTest extends \PHPUnit\Framework\TestCase
             'textarea' => [
                 'element' => $textarea,
                 'expectedValue' => 'textarea content',
+            ],
+            'paragraph' => [
+                'element' => $paragraph,
+                'expectedValue' => 'paragraph content',
             ],
         ];
     }
