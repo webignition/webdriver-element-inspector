@@ -59,6 +59,16 @@ class InspectorTest extends AbstractTestCase
                 'elementCssSelector' => 'select[name="select-has-selected"] option',
                 'expectedValue' => 'has-selected-3',
             ],
+            'select, none selected' => [
+                'fixture' => '/form.html',
+                'elementCssSelector' => 'select[name="select-none-selected"]',
+                'expectedValue' => 'none-selected-1',
+            ],
+            'select, has selected' => [
+                'fixture' => '/form.html',
+                'elementCssSelector' => 'select[name="select-has-selected"]',
+                'expectedValue' => 'has-selected-3',
+            ],
             'collection of unrelated elements' => [
                 'fixture' => '/form.html',
                 'elementCssSelector' => 'input',

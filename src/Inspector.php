@@ -11,6 +11,7 @@ class Inspector
 {
     const INPUT_ELEMENT_TAG_NAME = 'input';
     const TEXTAREA_TAG_NAME = 'textarea';
+    const SELECT_TAG_NAME = 'select';
 
     const VALUE_ATTRIBUTE = 'value';
 
@@ -46,6 +47,12 @@ class Inspector
 
         if (self::TEXTAREA_TAG_NAME === $tagName) {
             return $element->getText();
+        }
+
+        if (self::SELECT_TAG_NAME === $tagName) {
+            return $this->getSelectedCollectionValue(
+                SelectOptionCollection::fromSelectElement($element)
+            );
         }
 
         return $element->getText();

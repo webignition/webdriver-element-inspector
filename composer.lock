@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "12306319e62b24a965a419cc99b1774c",
+    "content-hash": "c10f5cff5f7c8d13d45a444e6aa4138b",
     "packages": [
         {
             "name": "facebook/webdriver",
@@ -117,16 +117,16 @@
         },
         {
             "name": "webignition/web-driver-element-collection",
-            "version": "0.5",
+            "version": "0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webignition/web-driver-element-collection.git",
-                "reference": "3b3e80e3c5d7120ef73902620b3dd35c3819c565"
+                "reference": "54eff4b3ee0ab88da2d77f323b8cd6894a156b47"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webignition/web-driver-element-collection/zipball/3b3e80e3c5d7120ef73902620b3dd35c3819c565",
-                "reference": "3b3e80e3c5d7120ef73902620b3dd35c3819c565",
+                "url": "https://api.github.com/repos/webignition/web-driver-element-collection/zipball/54eff4b3ee0ab88da2d77f323b8cd6894a156b47",
+                "reference": "54eff4b3ee0ab88da2d77f323b8cd6894a156b47",
                 "shasum": ""
             },
             "require": {
@@ -158,7 +158,7 @@
             ],
             "description": "A collection of Facebook\\WebDriver\\WebDriverElement",
             "homepage": "https://github.com/webignition/web-driver-element-collection",
-            "time": "2019-09-24T15:26:06+00:00"
+            "time": "2019-09-24T16:55:46+00:00"
         }
     ],
     "packages-dev": [
