@@ -34,7 +34,7 @@
     "require": {
         "php": ">=7.2",
         "facebook/webdriver": "^1.7.1",
-        "webignition/web-driver-element-collection": "^0.4.0"
+        "webignition/web-driver-element-collection": ">=0.5,<1"
     },
     "require-dev": {
         "phpunit/phpunit": "~8.0",
@@ -42,6 +42,7 @@
         "phpstan/phpstan": "^0.11.15",
         "symfony/panther": "^0.5",
         "mockery/mockery": "^1.2",
-        "phpstan/phpstan-mockery": "^0.11.3"
+        "phpstan/phpstan-mockery": "^0.11.3",
+        "webignition/symfony-panther-dom-crawler-navigator": ">=0.10,<1"
     }
 }
