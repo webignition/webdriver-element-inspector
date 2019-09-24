@@ -21,11 +21,7 @@ class Inspector
 
     public function getValue(WebDriverElementCollectionInterface $collection): ?string
     {
-        if ($collection instanceof RadioButtonCollection) {
-            return $this->getRadioGroupValue($collection);
-        }
-
-        if ($collection instanceof SelectOptionCollection) {
+        if ($collection instanceof RadioButtonCollection || $collection instanceof SelectOptionCollection) {
             return $this->getSelectedCollectionValue($collection);
         }
 
@@ -40,7 +36,7 @@ class Inspector
         return null;
     }
 
-    public function getElementValue(WebDriverElement $element): ?string
+    private function getElementValue(WebDriverElement $element): ?string
     {
         $tagName = $element->getTagName();
 
@@ -53,16 +49,6 @@ class Inspector
         }
 
         return $element->getText();
-    }
-
-    public function getRadioGroupValue(RadioButtonCollection $collection): ?string
-    {
-        return $this->getSelectedCollectionValue($collection);
-    }
-
-    public function getSelectOptionGroupValue(SelectOptionCollection $collection): ?string
-    {
-        return $this->getSelectedCollectionValue($collection);
     }
 
     private function getValueAttribute(WebDriverElement $element): ?string
