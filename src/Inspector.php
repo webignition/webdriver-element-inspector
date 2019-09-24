@@ -50,9 +50,11 @@ class Inspector
         }
 
         if (self::SELECT_TAG_NAME === $tagName) {
-            return $this->getSelectedCollectionValue(
-                SelectOptionCollection::fromSelectElement($element)
-            );
+            $selectOptionCollection = SelectOptionCollection::fromSelectElement($element);
+
+            if ($selectOptionCollection instanceof SelectOptionCollection) {
+                return $this->getSelectedCollectionValue($selectOptionCollection);
+            }
         }
 
         return $element->getText();
