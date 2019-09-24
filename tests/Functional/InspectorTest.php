@@ -1,4 +1,5 @@
 <?php
+/** @noinspection PhpUnhandledExceptionInspection */
 /** @noinspection PhpDocSignatureInspection */
 
 declare(strict_types=1);
@@ -6,6 +7,8 @@ declare(strict_types=1);
 namespace webignition\WebDriverElementInspector\Tests\Functional;
 
 use Facebook\WebDriver\WebDriverElement;
+use webignition\SymfonyDomCrawlerNavigator\Model\ElementLocator;
+use webignition\SymfonyDomCrawlerNavigator\Navigator;
 use webignition\WebDriverElementCollection\RadioButtonCollection;
 use webignition\WebDriverElementCollection\SelectOptionCollection;
 use webignition\WebDriverElementCollection\WebDriverElementCollection;
@@ -100,16 +103,13 @@ class InspectorTest extends AbstractTestCase
     public function testGetRadioGroupValue(string $fixture, string $elementCssSelector, ?string $expectedValue)
     {
         $crawler = self::$client->request('GET', $fixture);
-        $elements = $crawler->filter($elementCssSelector);
-        $collectionElements = [];
+        $navigator = Navigator::create($crawler);
 
-        foreach ($elements as $element) {
-            $collectionElements[] = $element;
+        $collection = $navigator->find(new ElementLocator($elementCssSelector));
+
+        if ($collection instanceof RadioButtonCollection) {
+            $this->assertSame($expectedValue, $this->inspector->getRadioGroupValue($collection));
         }
-
-        $collection = new RadioButtonCollection($collectionElements);
-
-        $this->assertSame($expectedValue, $this->inspector->getRadioGroupValue($collection));
     }
 
     public function getRadioGroupValueDataProvider(): array
@@ -137,16 +137,13 @@ class InspectorTest extends AbstractTestCase
         ?string $expectedValue
     ) {
         $crawler = self::$client->request('GET', $fixture);
-        $elements = $crawler->filter($elementCssSelector);
-        $collectionElements = [];
+        $navigator = Navigator::create($crawler);
 
-        foreach ($elements as $element) {
-            $collectionElements[] = $element;
+        $collection = $navigator->find(new ElementLocator($elementCssSelector));
+
+        if ($collection instanceof SelectOptionCollection) {
+            $this->assertSame($expectedValue, $this->inspector->getSelectOptionGroupValue($collection));
         }
-
-        $collection = new SelectOptionCollection($collectionElements);
-
-        $this->assertSame($expectedValue, $this->inspector->getSelectOptionGroupValue($collection));
     }
 
     public function getSelectOptionGroupValueDataProvider(): array
@@ -168,26 +165,16 @@ class InspectorTest extends AbstractTestCase
     public function testGetValue()
     {
         $crawler = self::$client->request('GET', '/form.html');
+        $navigator = Navigator::create($crawler);
 
         $singleInputCollection = new WebDriverElementCollection([
             $crawler->filter('input[name="input-with-non-empty-value"]')->getElement(0),
         ]);
 
-        $radioElements = [];
-        $radioCrawler = $crawler->filter('input[type="radio"][name="radio-checked"]');
-        foreach ($radioCrawler as $radioButton) {
-            $radioElements[] = $radioButton;
-        }
-
-        $radioButtonCollection = new RadioButtonCollection($radioElements);
-
-        $optionElements = [];
-        $optionCrawler = $crawler->filter('select[name="select-has-selected"] option');
-        foreach ($optionCrawler as $option) {
-            $optionElements[] = $option;
-        }
-
-        $selectOptionGroupCollection = new SelectOptionCollection($optionElements);
+        $radioButtonCollection = $navigator->find(new ElementLocator('input[type="radio"][name="radio-checked"]'));
+        $selectOptionGroupCollection = $navigator->find(new ElementLocator(
+            'select[name="select-has-selected"] option'
+        ));
 
         $this->assertSame('value content', $this->inspector->getValue($singleInputCollection));
         $this->assertSame('checked-2', $this->inspector->getValue($radioButtonCollection));

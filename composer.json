@@ -43,6 +43,6 @@
         "symfony/panther": "^0.5",
         "mockery/mockery": "^1.2",
         "phpstan/phpstan-mockery": "^0.11.3",
-        "webignition/symfony-panther-dom-crawler-navigator": "^0.9.0"
+        "webignition/symfony-panther-dom-crawler-navigator": ">=0.10,<1"
     }
 }

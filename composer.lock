@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c501dab78bc2dc9b56d3d2b527baf4c7",
+    "content-hash": "12306319e62b24a965a419cc99b1774c",
     "packages": [
         {
             "name": "facebook/webdriver",
@@ -3452,16 +3452,16 @@
         },
         {
             "name": "webignition/symfony-panther-dom-crawler-navigator",
-            "version": "0.9",
+            "version": "0.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webignition/symfony-panther-dom-crawler-navigator.git",
-                "reference": "be44cd1c88082d149ea34b8eade44e701443f71b"
+                "reference": "5918f1b5387f9cbc0cff085ea8f557d0836674dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webignition/symfony-panther-dom-crawler-navigator/zipball/be44cd1c88082d149ea34b8eade44e701443f71b",
-                "reference": "be44cd1c88082d149ea34b8eade44e701443f71b",
+                "url": "https://api.github.com/repos/webignition/symfony-panther-dom-crawler-navigator/zipball/5918f1b5387f9cbc0cff085ea8f557d0836674dc",
+                "reference": "5918f1b5387f9cbc0cff085ea8f557d0836674dc",
                 "shasum": ""
             },
             "require": {
@@ -3495,7 +3495,7 @@
             ],
             "description": "Navigate around a symfony panther dom crawler using convenience methods",
             "homepage": "https://github.com/webignition/symfony-panther-dom-crawler-navigatorr",
-            "time": "2019-09-24T15:39:10+00:00"
+            "time": "2019-09-24T16:12:06+00:00"
         },
         {
             "name": "webmozart/assert",
