@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "98558f1b32269978788cd03e190b354a",
+    "content-hash": "c501dab78bc2dc9b56d3d2b527baf4c7",
     "packages": [
         {
             "name": "facebook/webdriver",
@@ -117,16 +117,16 @@
         },
         {
             "name": "webignition/web-driver-element-collection",
-            "version": "0.4",
+            "version": "0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webignition/web-driver-element-collection.git",
-                "reference": "cbbbf9ae7d1ea20530fea8d1307c6832390883da"
+                "reference": "3b3e80e3c5d7120ef73902620b3dd35c3819c565"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webignition/web-driver-element-collection/zipball/cbbbf9ae7d1ea20530fea8d1307c6832390883da",
-                "reference": "cbbbf9ae7d1ea20530fea8d1307c6832390883da",
+                "url": "https://api.github.com/repos/webignition/web-driver-element-collection/zipball/3b3e80e3c5d7120ef73902620b3dd35c3819c565",
+                "reference": "3b3e80e3c5d7120ef73902620b3dd35c3819c565",
                 "shasum": ""
             },
             "require": {
@@ -158,7 +158,7 @@
             ],
             "description": "A collection of Facebook\\WebDriver\\WebDriverElement",
             "homepage": "https://github.com/webignition/web-driver-element-collection",
-            "time": "2019-09-02T15:21:15+00:00"
+            "time": "2019-09-24T15:26:06+00:00"
         }
     ],
     "packages-dev": [
@@ -3449,6 +3449,53 @@
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
             "time": "2019-06-13T22:48:21+00:00"
+        },
+        {
+            "name": "webignition/symfony-panther-dom-crawler-navigator",
+            "version": "0.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/webignition/symfony-panther-dom-crawler-navigator.git",
+                "reference": "be44cd1c88082d149ea34b8eade44e701443f71b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/webignition/symfony-panther-dom-crawler-navigator/zipball/be44cd1c88082d149ea34b8eade44e701443f71b",
+                "reference": "be44cd1c88082d149ea34b8eade44e701443f71b",
+                "shasum": ""
+            },
+            "require": {
+                "facebook/webdriver": "^1.7.1",
+                "php": ">=7.2",
+                "symfony/panther": "^0.5",
+                "webignition/web-driver-element-collection": ">=0.5,<1"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.2",
+                "phpstan/phpstan": "^0.11.15",
+                "phpstan/phpstan-mockery": "^0.11.3",
+                "phpunit/phpunit": "~8.0",
+                "squizlabs/php_codesniffer": "3.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "webignition\\SymfonyDomCrawlerNavigator\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jon Cram",
+                    "email": "webignition@gmail.com"
+                }
+            ],
+            "description": "Navigate around a symfony panther dom crawler using convenience methods",
+            "homepage": "https://github.com/webignition/symfony-panther-dom-crawler-navigatorr",
+            "time": "2019-09-24T15:39:10+00:00"
         },
         {
             "name": "webmozart/assert",
