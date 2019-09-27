@@ -41,16 +41,8 @@ class Inspector
     {
         $tagName = $element->getTagName();
 
-        if (in_array($tagName, [self::INPUT_ELEMENT_TAG_NAME, self::TEXTAREA_TAG_NAME])) {
+        if (in_array($tagName, [self::INPUT_ELEMENT_TAG_NAME, self::TEXTAREA_TAG_NAME, self::SELECT_TAG_NAME])) {
             return $this->getValueAttribute($element);
-        }
-
-        if (self::SELECT_TAG_NAME === $tagName) {
-            $selectOptionCollection = SelectOptionCollection::fromSelectElement($element);
-
-            if ($selectOptionCollection instanceof SelectOptionCollection) {
-                return $this->getSelectedCollectionValue($selectOptionCollection);
-            }
         }
 
         return $element->getText();
