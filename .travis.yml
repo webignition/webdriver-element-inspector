@@ -9,7 +9,13 @@ install:
   - composer install --prefer-dist
 
 script:
-  - composer ci
+  - composer cs
+  # Workaround to prevent phpstan erroring: start
+  - composer require --dev symfony/framework-bundle
+  - composer static-analysis
+  - composer remove --dev symfony/framework-bundle
+  # Workaround to prevent phpstan erroring: end
+  - composer test
 
 cache:
   directories:
