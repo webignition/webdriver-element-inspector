@@ -40,9 +40,9 @@
         "phpunit/phpunit": "~8.0",
         "squizlabs/php_codesniffer": "3.*",
         "phpstan/phpstan": "^0.11.15",
-        "symfony/panther": "^0.5",
+        "symfony/panther": "^0.6",
         "mockery/mockery": "^1.2",
         "phpstan/phpstan-mockery": "^0.11.3",
-        "webignition/symfony-panther-dom-crawler-navigator": ">=0.10,<1"
+        "webignition/symfony-panther-dom-crawler-navigator": ">=0.12,<1"
     }
 }

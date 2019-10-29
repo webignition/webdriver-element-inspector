@@ -6,7 +6,7 @@ declare(strict_types=1);
 
 namespace webignition\WebDriverElementInspector\Tests\Functional;
 
-use webignition\SymfonyDomCrawlerNavigator\Model\ElementLocator;
+use webignition\DomElementLocator\ElementLocator;
 use webignition\SymfonyDomCrawlerNavigator\Navigator;
 use webignition\WebDriverElementInspector\Inspector;
 
