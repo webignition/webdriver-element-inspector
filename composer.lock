@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c10f5cff5f7c8d13d45a444e6aa4138b",
+    "content-hash": "5f9499964d40a1ca1e78b6c8849e7af9",
     "packages": [
         {
             "name": "facebook/webdriver",
@@ -3053,26 +3053,26 @@
         },
         {
             "name": "symfony/panther",
-            "version": "v0.5.2",
+            "version": "v0.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/panther.git",
-                "reference": "6c77f8b3693aff1ea988e10e9a953b9751394540"
+                "reference": "0aeafcf21af2727da3536acf2a9c3778e3a5f222"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/panther/zipball/6c77f8b3693aff1ea988e10e9a953b9751394540",
-                "reference": "6c77f8b3693aff1ea988e10e9a953b9751394540",
+                "url": "https://api.github.com/repos/symfony/panther/zipball/0aeafcf21af2727da3536acf2a9c3778e3a5f222",
+                "reference": "0aeafcf21af2727da3536acf2a9c3778e3a5f222",
                 "shasum": ""
             },
             "require": {
                 "facebook/webdriver": "^1.7.1",
                 "php": ">=7.1",
-                "symfony/browser-kit": "^4.3",
-                "symfony/dom-crawler": "^4.3",
-                "symfony/http-client": "^4.3",
+                "symfony/browser-kit": "^4.3 || ^5.0",
+                "symfony/dom-crawler": "^4.3 || ^5.0",
+                "symfony/http-client": "^4.3 || ^5.0",
                 "symfony/polyfill-php72": "^1.9",
-                "symfony/process": "^3.4 || ^4.0"
+                "symfony/process": "^3.4 || ^4.0 || ^5.0"
             },
             "conflict": {
                 "symfony/framework-bundle": ">=4.3 <4.3.4"
@@ -3080,9 +3080,9 @@
             "require-dev": {
                 "fabpot/goutte": "^3.2.3",
                 "guzzlehttp/guzzle": "^6.3",
-                "symfony/css-selector": "^3.4 || ^4.0",
-                "symfony/framework-bundle": "^3.4 || ^4.0",
-                "symfony/phpunit-bridge": "^4.3.3"
+                "symfony/css-selector": "^3.4 || ^4.0 || ^5.0",
+                "symfony/framework-bundle": "^3.4 || ^4.0 || ^5.0",
+                "symfony/phpunit-bridge": "^4.3.3 || ^5.0"
             },
             "type": "library",
             "extra": {
@@ -3120,7 +3120,7 @@
                 "testing",
                 "webdriver"
             ],
-            "time": "2019-08-27T22:41:08+00:00"
+            "time": "2019-10-28T17:01:40+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
@@ -3451,23 +3451,66 @@
             "time": "2019-06-13T22:48:21+00:00"
         },
         {
-            "name": "webignition/symfony-panther-dom-crawler-navigator",
-            "version": "0.10",
+            "name": "webignition/php-dom-element-locator",
+            "version": "0.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/webignition/symfony-panther-dom-crawler-navigator.git",
-                "reference": "5918f1b5387f9cbc0cff085ea8f557d0836674dc"
+                "url": "https://github.com/webignition/php-dom-element-locator.git",
+                "reference": "78873e1f6d77b83672bd14f3e5e0dce07c63b828"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webignition/symfony-panther-dom-crawler-navigator/zipball/5918f1b5387f9cbc0cff085ea8f557d0836674dc",
-                "reference": "5918f1b5387f9cbc0cff085ea8f557d0836674dc",
+                "url": "https://api.github.com/repos/webignition/php-dom-element-locator/zipball/78873e1f6d77b83672bd14f3e5e0dce07c63b828",
+                "reference": "78873e1f6d77b83672bd14f3e5e0dce07c63b828",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^0.11.16",
+                "phpunit/phpunit": "~8.0",
+                "squizlabs/php_codesniffer": "3.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "webignition\\DomElementLocator\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jon Cram",
+                    "email": "webignition@gmail.com"
+                }
+            ],
+            "description": "Model for identifying the location of an element within a DOM",
+            "homepage": "https://github.com/webignition/php-dom-element-locator",
+            "time": "2019-09-25T16:49:40+00:00"
+        },
+        {
+            "name": "webignition/symfony-panther-dom-crawler-navigator",
+            "version": "0.12",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/webignition/symfony-panther-dom-crawler-navigator.git",
+                "reference": "0273835fac428785c958b2c3f2a1773126d3b578"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/webignition/symfony-panther-dom-crawler-navigator/zipball/0273835fac428785c958b2c3f2a1773126d3b578",
+                "reference": "0273835fac428785c958b2c3f2a1773126d3b578",
                 "shasum": ""
             },
             "require": {
                 "facebook/webdriver": "^1.7.1",
                 "php": ">=7.2",
-                "symfony/panther": "^0.5",
+                "symfony/panther": "^0.6",
+                "webignition/php-dom-element-locator": "^0.1.0",
                 "webignition/web-driver-element-collection": ">=0.5,<1"
             },
             "require-dev": {
@@ -3495,7 +3538,7 @@
             ],
             "description": "Navigate around a symfony panther dom crawler using convenience methods",
             "homepage": "https://github.com/webignition/symfony-panther-dom-crawler-navigatorr",
-            "time": "2019-09-24T16:12:06+00:00"
+            "time": "2019-10-29T12:53:18+00:00"
         },
         {
             "name": "webmozart/assert",
