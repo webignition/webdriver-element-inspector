@@ -2,25 +2,20 @@
 
 namespace webignition\WebDriverElementInspector\Tests\Functional;
 
-use Symfony\Component\Panther\Client;
-use Symfony\Component\Panther\PantherTestCase;
+use webignition\BasePantherTestCase\AbstractBrowserTestCase;
 
-abstract class AbstractTestCase extends PantherTestCase
+abstract class AbstractTestCase extends AbstractBrowserTestCase
 {
     const FIXTURES_RELATIVE_PATH = '/fixtures';
     const FIXTURES_HTML_RELATIVE_PATH = '/html';
 
-    /**
-     * @var Client
-     */
-    protected static $client;
-
-    protected function setUp(): void
+    public static function setUpBeforeClass(): void
     {
-        self::$webServerDir = (string) realpath(
-            __DIR__  . '/..' . self::FIXTURES_RELATIVE_PATH . self::FIXTURES_HTML_RELATIVE_PATH
-        );
+        self::$webServerDir = __DIR__
+            . '/..'
+            . self::FIXTURES_RELATIVE_PATH
+            . self::FIXTURES_HTML_RELATIVE_PATH;
 
-        self::$client = self::createPantherClient();
+        parent::setUpBeforeClass();
     }
 }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5f9499964d40a1ca1e78b6c8849e7af9",
+    "content-hash": "43e971adc1f088b8c242f5c9b87fd5d4",
     "packages": [
         {
             "name": "facebook/webdriver",
@@ -3449,6 +3449,48 @@
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
             "time": "2019-06-13T22:48:21+00:00"
+        },
+        {
+            "name": "webignition/base-panther-test-case",
+            "version": "0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/webignition/base-panther-test-case.git",
+                "reference": "4d6592531d7316a726d8192b20813ce2a4553fe2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/webignition/base-panther-test-case/zipball/4d6592531d7316a726d8192b20813ce2a4553fe2",
+                "reference": "4d6592531d7316a726d8192b20813ce2a4553fe2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "phpunit/phpunit": "~8.0",
+                "symfony/panther": "^0.6"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^0.11.15",
+                "squizlabs/php_codesniffer": "3.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "webignition\\BasePantherTestCase\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jon Cram",
+                    "email": "webignition@gmail.com"
+                }
+            ],
+            "homepage": "https://github.com/webignition/base-panther-test-case",
+            "time": "2019-10-31T16:04:08+00:00"
         },
         {
             "name": "webignition/php-dom-element-locator",
