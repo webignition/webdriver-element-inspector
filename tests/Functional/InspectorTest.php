@@ -1,12 +1,10 @@
 <?php
-/** @noinspection PhpUnhandledExceptionInspection */
-/** @noinspection PhpDocSignatureInspection */
 
 declare(strict_types=1);
 
 namespace webignition\WebDriverElementInspector\Tests\Functional;
 
-use webignition\DomElementLocator\ElementLocator;
+use webignition\DomElementIdentifier\ElementIdentifier;
 use webignition\SymfonyDomCrawlerNavigator\Navigator;
 use webignition\WebDriverElementInspector\Inspector;
 
@@ -31,7 +29,7 @@ class InspectorTest extends AbstractTestCase
     {
         $crawler = self::$client->request('GET', $fixture);
         $navigator = Navigator::create($crawler);
-        $collection = $navigator->find(new ElementLocator($elementCssSelector));
+        $collection = $navigator->find(new ElementIdentifier($elementCssSelector));
 
         $this->assertSame($expectedValue, $this->inspector->getValue($collection));
     }
