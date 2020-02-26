@@ -9,11 +9,11 @@ use webignition\WebDriverElementCollection\WebDriverElementCollectionInterface;
 
 class Inspector
 {
-    const INPUT_ELEMENT_TAG_NAME = 'input';
-    const TEXTAREA_TAG_NAME = 'textarea';
-    const SELECT_TAG_NAME = 'select';
+    private const INPUT_ELEMENT_TAG_NAME = 'input';
+    private const TEXTAREA_TAG_NAME = 'textarea';
+    private const SELECT_TAG_NAME = 'select';
 
-    const VALUE_ATTRIBUTE = 'value';
+    private const VALUE_ATTRIBUTE = 'value';
 
     public static function create(): Inspector
     {
