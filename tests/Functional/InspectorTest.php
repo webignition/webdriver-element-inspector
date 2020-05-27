@@ -10,10 +10,7 @@ use webignition\WebDriverElementInspector\Inspector;
 
 class InspectorTest extends AbstractTestCase
 {
-    /**
-     * @var Inspector
-     */
-    private $inspector;
+    private Inspector $inspector;
 
     protected function setUp(): void
     {
