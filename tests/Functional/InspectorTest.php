@@ -22,7 +22,7 @@ class InspectorTest extends AbstractTestCase
     /**
      * @dataProvider getValueDataProvider
      */
-    public function testGetValue(string $fixture, string $elementCssSelector, ?string $expectedValue)
+    public function testGetValue(string $fixture, string $elementCssSelector, ?string $expectedValue): void
     {
         $crawler = self::$client->request('GET', $fixture);
         $navigator = Navigator::create($crawler);
@@ -31,6 +31,9 @@ class InspectorTest extends AbstractTestCase
         $this->assertSame($expectedValue, $this->inspector->getValue($collection));
     }
 
+    /**
+     * @return array[]
+     */
     public function getValueDataProvider(): array
     {
         return [
