@@ -22,8 +22,13 @@
         }
     },
     "scripts": {
+        "cs-ecs": "./vendor/bin/ecs check src tests --ansi --config ecs.php",
         "cs-phpcs": "./vendor/bin/phpcs",
+        "cs-fix": [
+            "./vendor/bin/ecs check src tests --ansi --config ecs.php --fix"
+        ],
         "cs": [
+            "@cs-ecs",
             "@cs-phpcs"
         ],
         "static-analysis": "./vendor/bin/phpstan analyse --ansi",
@@ -45,6 +50,7 @@
         "phpunit/phpunit": "^9.5",
         "squizlabs/php_codesniffer": "3.*",
         "symfony/panther": "^0.7",
+        "symplify/easy-coding-standard": "^9.1",
         "webignition/base-panther-test-case": ">=0.9,<1",
         "webignition/php-dom-element-identifier": ">=0.14,<1",
         "webignition/symfony-panther-dom-crawler-navigator": ">=0.18,<1"
