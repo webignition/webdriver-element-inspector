@@ -22,7 +22,10 @@
         }
     },
     "scripts": {
-        "cs": "./vendor/bin/phpcs src tests --colors --standard=PSR12",
+        "cs-phpcs": "./vendor/bin/phpcs",
+        "cs": [
+            "@cs-phpcs"
+        ],
         "static-analysis": "./vendor/bin/phpstan analyse --ansi",
         "test": "./vendor/bin/phpunit --colors=always",
         "ci": [
