@@ -32,7 +32,7 @@ class InspectorTest extends AbstractTestCase
     }
 
     /**
-     * @return array[]
+     * @return array<mixed>
      */
     public function getValueDataProvider(): array
     {

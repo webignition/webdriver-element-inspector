@@ -8,7 +8,7 @@ on:
 
 jobs:
   phpstan:
-    name: PHPStan - PHP ${{ matrix.php }} ${{ matrix.operating-system }}
+    name: PHPStan - PHP ${{ matrix.php }}
     strategy:
       matrix:
         operating-system: [ubuntu-latest]
@@ -23,11 +23,13 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
+          extensions: zip
+
+      - name: Download dependencies
+        uses: php-actions/composer@v6
+        with:
+          php_version: ${{ matrix.php }}
+          args: --ignore-platform-req=ext-zip
 
       - name: PHPStan
-        uses: docker://oskarstark/phpstan-ga
-        env:
-          REQUIRE_DEV: true
-          CHECK_PLATFORM_REQUIREMENTS: false
-        with:
-          args: analyse --no-progress
+        run: composer static-analysis
