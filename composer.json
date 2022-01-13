@@ -38,7 +38,7 @@
         ]
     },
     "require": {
-        "php": "^7.4|^8.0",
+        "php": "^7.4|^8.0|^8.1",
         "webignition/web-driver-element-collection": ">=0.10,<1",
         "php-webdriver/webdriver": "^1.12"
     },
